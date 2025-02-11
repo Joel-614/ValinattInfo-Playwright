@@ -35,11 +35,8 @@ exports.VendorLoginPage = class VendorLoginPage{
 
     async login(username, password){
 
-        this.enterUsername("");
-        this.enterPassword("");
-
-        this.enterUsername(username);
-        this.enterPassword(password);
-        this.clickLogin();
+        await this.enterUsername(username);
+        await this.enterPassword(password);
+        await this.clickLogin();
     }
 }
