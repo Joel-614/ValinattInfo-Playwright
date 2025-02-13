@@ -49,7 +49,7 @@ test("Validate the Invalid Login Scenarios", async ({page}) => {
     await expect(vLoginPage.alertTextH1).toHaveText(alertText);
     await vLoginPage.clickAlertDoneButton();
   }
-
+  
 });
 
 test("Validate the Forgot Password Link", async ({page}) => {
