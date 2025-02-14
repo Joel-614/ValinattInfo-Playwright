@@ -1,7 +1,7 @@
 const {test, expect} = require('@playwright/test');
 
-import { VendorLoginPage } from '../pages/VendorLoginPage'; 
-import { ForgotPasswordPage } from '../pages/ForgotPasswordPage';
+import { VendorLoginPage } from '../../pages/Vendor/LoginPage'; 
+import { ForgotPasswordPage } from '../../pages/Vendor/ForgotPasswordPage';
 
 let vLoginPage, fPasswordPage;
 
