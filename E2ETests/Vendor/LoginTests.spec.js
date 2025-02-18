@@ -2,14 +2,17 @@
 const { test, expect } = require('@playwright/test');
 import { VendorLoginPage } from '../../pages/Vendor/LoginPage';
 import { ForgotPasswordPage } from '../../pages/Vendor/ForgotPasswordPage';
+import { SideNavigationPage } from '../../pages/Vendor/SideAndTopbarPage';
 
-let vLoginPage, fPasswordPage;
+let vLoginPage, fPasswordPage, sideNavigationPage;
+let username = "rajkumarbg_third_iteration_test";
 
 test.beforeEach(async ({page}) => {
 
   await page.goto("http://dev.valianttinfo.com/")
   vLoginPage = new VendorLoginPage(page);
   fPasswordPage = new ForgotPasswordPage(page);
+  sideNavigationPage = new SideNavigationPage(page);
 
 });
 
@@ -24,15 +27,15 @@ test("Validate the Design", async ({page})=> {
 
 });
 
-test("Validate the Username Input", async ({page}) => {  
+test("Validate the Username Input", async () => {  
   await expect(vLoginPage.username).toHaveAttribute('placeholder', 'Enter Registered Username')
 });
 
-test("Validate the Password Input", async ({page}) => {
+test("Validate the Password Input", async () => {
   await expect(vLoginPage.password).toHaveAttribute("placeholder", "Enter password")
 });
 
-test("Validate the Invalid Login Scenarios", async ({page}) => { 
+test("Validate the Invalid Login Scenarios", async () => { 
   
   const alertText = "Failed";
   const loginTestData = [
@@ -52,7 +55,15 @@ test("Validate the Invalid Login Scenarios", async ({page}) => {
   
 });
 
-test("Validate the Forgot Password Link", async ({page}) => {
+test("Valdidate Valid Login", async () => {
+
+  await vLoginPage.login(username, "Vrdella!6");
+  await expect(sideNavigationPage.vendorUsername).toHaveText(username);
+  await sideNavigationPage.logout();
+
+})
+
+test("Validate the Forgot Password Link", async () => {
   await vLoginPage.clickForgotPasswordButton();
   await expect(fPasswordPage.pagetitle).toHaveText("Forgot Password?");
 });

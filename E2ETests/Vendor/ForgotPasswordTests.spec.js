@@ -42,7 +42,7 @@ test("Validate the Invalid Forgot Password Scenarios", async () => {
 
 test("Validate the Valid Forgot Password Scenario", async () => {
 
-    var username = "joel_the_02";
+    var username = "rajkumarbg_third_iteration_test";
 
     // TC1: Click Next Button with a valid username
     await fPasswordPage.username.fill(username);
