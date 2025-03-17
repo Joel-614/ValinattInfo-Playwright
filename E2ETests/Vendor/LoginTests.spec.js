@@ -5,7 +5,7 @@ import { ForgotPasswordPage } from '../../pages/Vendor/ForgotPasswordPage';
 import { SideNavigationPage } from '../../pages/Vendor/SideAndTopbarPage';
 
 let vLoginPage, fPasswordPage, sideNavigationPage;
-let username = "rajkumarbg_third_iteration_test";
+let username = "joel_the_03";
 
 test.beforeEach(async ({page}) => {
 
