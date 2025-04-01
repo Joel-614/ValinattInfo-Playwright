@@ -2,8 +2,9 @@ import {test, expect} from "@playwright/test";
 
 import { VendorLoginPage } from "../../pages/Vendor/LoginPage";
 import { SideNavigationPage } from "../../pages/Vendor/SideAndTopbarPage";
+import { CandidateDetailsPage } from "../../pages/Vendor/CandidateDetailsPage";
 
-let vLoginPage, sideNavigationPage;
+let vLoginPage, sideNavigationPage, candidateDetailsPage;
 let username = "joel_the_03";
 let candidateName = "CandidateSixSix";
 
@@ -13,6 +14,7 @@ test.beforeEach(async ({page}) => {
 
     vLoginPage = new VendorLoginPage(page);
     sideNavigationPage = new SideNavigationPage(page);
+    candidateDetailsPage = new CandidateDetailsPage(page);
 
     await vLoginPage.login(username, "Vrdella!6");
 
@@ -30,6 +32,10 @@ test("Validate the Vendor - Side Navigation's Candidate Details", async () => {
 
     await expect(sideNavigationPage.candidateDetailsButton).toBeVisible();
     await sideNavigationPage.clickCandidateDetailsButton();
+
+    await validateOptionalScenarios(username, "Candidate Details");
+
+    await candidateDetailsPage.clickBeginVerificationButton();
 
     await validateOptionalScenarios(username, "Candidate Details");
 });
