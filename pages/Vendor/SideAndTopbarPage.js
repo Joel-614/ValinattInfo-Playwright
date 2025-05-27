@@ -4,11 +4,13 @@ exports.SideNavigationPage = class SideNavigationPage{
 
         this.page = page;
 
-        // Side Bar - Top Section
+        // Side Bar ---------------------------------------------------------------------
+
+        // Top Section
         this.vendorUsername = page.locator("//span[@class='CompanyName Ellipsis']");
         this.vendorEmail = page.locator("//span[@class='CompanyEmail Ellipsis']");
 
-        // Side Bar - Middle Section
+        // Middle Section
         this.dashboardButton = page.getByRole("link", {name: "Dashboard"});
         this.candidateDetailsButton = page.getByRole("link", {name: "Candidate Details"});
         this.packDetailsButton = page.getByRole("link", {name: "Pack Details"});
@@ -21,22 +23,43 @@ exports.SideNavigationPage = class SideNavigationPage{
         this.contactUsButton = page.getByRole("link", {name: "Contact Us"});
 
 
-        // Side Bar - Bottom Section
+        // Bottom Section
         // LogOut Button
         this.logoutButton = page.locator("//div[@class='Logout CenterDiv']");
         this.logoutYesButton = page.locator("(//div[@class='logoutCont']//button)[2]");
         this.logoutNoButton = page.locator("(//div[@class='logoutCont']//button)[1]");
         
-        // Top Bar
+        // Side Bar ---------------------------------------------------------------------
+
+
+        // Top Bar ---------------------------------------------------------------------
         this.pageTitle = page.locator("//h1[@class='Ellipsis']");
         this.searchBar = page.getByPlaceholder("Search Candidate");
         this.searchBarButton = page.locator("//div[@class='searchBar']//button");
+
+        // Wallet
+        this.walletButton = this.page.locator("[class='walletDetails ']");
+        this.totalAmount = this.page.locator("[class='walletDetails '] p");
+        this.rechargeNowButton = this.page.locator("[class='walletBtnPrimary']");
+        this.moreDetailsButton = this.page.locator("[class='walletBtnSecondary']");
+        
+        this.lowBalanceAmount = this.page.locator("[class='balance']");
+        this.editLowBalanceAlertButton = this.page.locator("p[class='lowBalanceNonEdit '] svg");
+        this.editLowBalanceAmountInput = this.page.locator("[class='lowBalanceInput']");
+        this.editLowBalanceCancelButton = this.page.locator("[class='cancelBtn']");
+        this.editLowBalanceSaveButton = this.page.locator("[class='saveBtn']");
+        
+        this.rechargeAmtInput = this.page.getByPlaceholder("Enter Recharge Amount");
+        this.walletRechargeFormCloseButton = this.page.locator("div[class='HeaderClose'] svg");
+        this.confirmButton = this.page.locator("[class='confirmBtn']");
+
         this.notificationButton = page.locator("//div[@class='notificationSvg']");
         this.notificationTitle = page.locator("//header[@class='NotificationHeader']/h1");
         
         // Search Candidate List
         this.searchedCandidate = page.locator("//td[@data-index='1']/span/span");
 
+        // Top Bar ---------------------------------------------------------------------
     };
 
     // Side Bar - Middle Section
@@ -58,7 +81,7 @@ exports.SideNavigationPage = class SideNavigationPage{
 
     async clickAdditionalCostButton(){
         await this.additionalCostButton.click();
-    }
+    };
 
     async clickBillingDetailsButton(){
         await this.billingDetailsButton.click();
@@ -90,6 +113,46 @@ exports.SideNavigationPage = class SideNavigationPage{
     async searchCandidate(candidateName){
         await this.searchBar.fill(candidateName);
         await this.searchBarButton.click();
+    }
+
+    async clickWalletButton(){
+        await this.walletButton.click();
+    }
+
+    async clickEditLowBalanceAlertButton(){
+        await this.editLowBalanceAlertButton.click();
+    }
+
+    async enterEditLowBalanceAmountInput(amount){
+        await this.editLowBalanceAmountInput.fill(amount);
+    }
+
+    async clickEditLowBalanceSaveButton(){
+        await this.editLowBalanceSaveButton.click();
+    }
+
+    async clickEditLowBalanceCancelButton(){
+        await this.editLowBalanceCancelButton.click();
+    }
+
+    async clickRechargeNowButton(){
+        await this.rechargeNowButton.click();
+    }
+
+    async clickWalletRechargeFormCloseButton(){
+        await this.walletRechargeFormCloseButton.click();
+    }
+
+    async enterRechargeAmtInput(amount){
+        this.rechargeAmtInput.fill(amount);
+    }
+
+    async clickConfirmButton(){
+        await this.confirmButton.click();
+    }
+
+    async refresh(){
+        await this.page.reload();
     }
 
     async clickNotificationButton(){

@@ -10,7 +10,7 @@ let candidateName = "CandidateSixSix";
 
 test.beforeEach(async ({page}) => {
 
-    await page.goto("http://dev.valianttinfo.com/")
+    await page.goto("https://devapp.valianttinfo.com/")
 
     vLoginPage = new VendorLoginPage(page);
     sideNavigationPage = new SideNavigationPage(page);

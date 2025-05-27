@@ -9,7 +9,7 @@ let username = "joel_the_03";
 
 test.beforeEach(async ({page}) => {
 
-  await page.goto("http://dev.valianttinfo.com/")
+  await page.goto("http://devapp.valianttinfo.com/")
   vLoginPage = new VendorLoginPage(page);
   fPasswordPage = new ForgotPasswordPage(page);
   sideNavigationPage = new SideNavigationPage(page);

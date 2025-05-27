@@ -7,7 +7,7 @@ let vLoginPage, fPasswordPage;
 
 test.beforeEach(async ({page}) => {
     
-    await page.goto("http://dev.valianttinfo.com/")
+    await page.goto("https://devapp.valianttinfo.com/")
     
     vLoginPage = new VendorLoginPage(page);
     fPasswordPage = new ForgotPasswordPage(page);
