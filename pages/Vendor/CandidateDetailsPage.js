@@ -7,8 +7,8 @@ exports.CandidateDetailsPage = class CandidateDetailsPage{
         
         // Candidate Details:
         this.searchBoxIcon = page.locator("(//button)[3]");
-        this.searchBox = page.locator("[id=':r11:']");
-        this.searchedCandidate = page.locator("[aria-label='Candidate Sanity One']");
+        this.searchBox = page.locator("[placeholder='Search']");
+        this.searchedCandidate = page.locator("[aria-label='" + process.env.CANDIDATENAME +  "']");
         this.noResultsFound = page.locator("(//p)[3]");
         this.searchBoxCancel = page.locator("button[aria-label='Clear search']");
 
@@ -31,6 +31,8 @@ exports.CandidateDetailsPage = class CandidateDetailsPage{
         this.courtCheck = page.locator("(//*[@type='checkbox'])[3]");
         this.randomPackage = page.locator("(//p[@class='packageName'])[2]"); 
         this.allChecks = page.locator("//*[@class='checksList']//input");
+        this.searchCheckInp = page.locator("[class='searchBox'] input");
+        this.searchedCheck = page.locator("(//*[@class='packageName'])[2]");
 
         // Payment Method:
         this.payByWallet = page.locator("//p[text() = 'Pay Via Wallet']");
@@ -91,4 +93,9 @@ exports.CandidateDetailsPage = class CandidateDetailsPage{
         if(fileName != "")
             await this.uploadButton.setInputFiles(fileName);
     }
+
+    async enterSearchCheckInp(checkName){
+        await this.searchCheckInp.fill(checkName);
+    }
+
 }

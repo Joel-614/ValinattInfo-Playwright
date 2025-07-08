@@ -4,7 +4,7 @@ import { SideNavigationPage } from "../../pages/Vendor/SideAndTopbarPage";
 import { CandidateDetailsPage } from "../../pages/Vendor/CandidateDetailsPage";
 
 let loginPage, sideNavigationPage, candidateDetailsPage;
-let username = "joel_viltrumite", password = "Vrdella!6";
+let candidateName = process.env.CANDIDATENAME;
 
 test.beforeEach(async ({page}) => {
 
@@ -12,24 +12,25 @@ test.beforeEach(async ({page}) => {
     sideNavigationPage = new SideNavigationPage(page);
     candidateDetailsPage = new CandidateDetailsPage(page);
 
-    await page.goto("https://devapp.valianttinfo.com/");
+    await page.goto(process.env.URL);
 
-    await loginPage.login(username, password)
+    await loginPage.login(process.env.USERID, process.env.PASSID);
     await sideNavigationPage.clickCandidateDetailsButton();
 
 })
 
 test.describe("Validate the Candidate Details", async () => {
     
-    test("Validating the Searchbox", async () => {
+    test("Validating the Searchbox", async ({page}) => {
 
         // Validating if the search candidate is being retrieved
-        var candidateName = "Candidate Sanity One";
         await candidateDetailsPage.enterSearchBox(candidateName);
         await expect(candidateDetailsPage.searchedCandidate).toBeVisible();
 
+        await page.waitForTimeout(1500);
         // Validating the list if we given an invalid candidate Name
         await candidateDetailsPage.enterSearchBox("TEST TEST TEST");
+        await page.waitForTimeout(1500);
         await expect(candidateDetailsPage.noResultsFound).toHaveText("No results found");
 
         // Validating the list after clicking on cancel
@@ -92,6 +93,19 @@ test.describe("Validate the Begin Verification Form Scenarios", async () => {
         }
     })
 
+    test("Validating the Check Search Bar", async () => {
+
+        var checkName = "BGV286";
+
+        // TC: Validating the search bar when we enter a valid check name
+        await candidateDetailsPage.enterSearchCheckInp(checkName);
+        await expect(candidateDetailsPage.searchedCheck).toHaveText(checkName);
+
+        // TC: Validating the search bar when we enter a invalid check name
+        await candidateDetailsPage.enterSearchCheckInp("TESTESTTEST");
+        await expect(candidateDetailsPage.searchedCheck).toBeHidden();
+
+    })
 });
 
 test.skip("Validate Candidate Begin Verification Process for Successful Scenario", async () => {

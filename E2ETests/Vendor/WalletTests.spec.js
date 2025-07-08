@@ -5,18 +5,17 @@ import { CCAvenuePage } from "../../pages/Vendor/CCAvenuePage";
 import { BillingDetailsPage } from "../../pages/Vendor/BillingDetailsPage";
 
 var loginPage, sideAndTopbarPage, ccAvenuePage, billingDetailsPage;
-const username = "joel_viltrumite", password = "Vrdella!6";
 
 test.beforeEach(async ({page}) => {
 
-    await page.goto("https://devapp.valianttinfo.com/");
+    await page.goto(process.env.URL);
 
     loginPage = new VendorLoginPage(page);
     sideAndTopbarPage = new SideNavigationPage(page);
     ccAvenuePage = new CCAvenuePage(page);
     billingDetailsPage = new BillingDetailsPage(page);
 
-    await loginPage.login(username, password);    
+    await loginPage.login(process.env.USERID, process.env.PASSID);    
 
     await sideAndTopbarPage.clickWalletButton();
 

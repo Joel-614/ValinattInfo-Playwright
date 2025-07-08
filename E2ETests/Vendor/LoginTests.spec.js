@@ -5,11 +5,12 @@ import { ForgotPasswordPage } from '../../pages/Vendor/ForgotPasswordPage';
 import { SideNavigationPage } from '../../pages/Vendor/SideAndTopbarPage';
 
 let vLoginPage, fPasswordPage, sideNavigationPage;
-let username = "joel_the_03";
+let username = process.env.USERID;
 
 test.beforeEach(async ({page}) => {
 
-  await page.goto("http://devapp.valianttinfo.com/")
+  await page.goto(process.env.URL);
+  
   vLoginPage = new VendorLoginPage(page);
   fPasswordPage = new ForgotPasswordPage(page);
   sideNavigationPage = new SideNavigationPage(page);
@@ -57,7 +58,7 @@ test("Validate the Invalid Login Scenarios", async () => {
 
 test("Valdidate Valid Login", async () => {
 
-  await vLoginPage.login(username, "Vrdella!6");
+  await vLoginPage.login(process.env.USERID, process.env.PASSID);
   await expect(sideNavigationPage.vendorUsername).toHaveText(username);
   await sideNavigationPage.logout();
 

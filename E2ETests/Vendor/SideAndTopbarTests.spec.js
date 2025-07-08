@@ -5,18 +5,18 @@ import { SideNavigationPage } from "../../pages/Vendor/SideAndTopbarPage";
 import { CandidateDetailsPage } from "../../pages/Vendor/CandidateDetailsPage";
 
 let vLoginPage, sideNavigationPage, candidateDetailsPage;
-let username = "joel_the_03";
-let candidateName = "CandidateSixSix";
+let username = process.env.USERID;
+let candidateName = process.env.CANDIDATENAME;
 
 test.beforeEach(async ({page}) => {
 
-    await page.goto("https://devapp.valianttinfo.com/")
-
+    await page.goto(process.env.URL);
+    
     vLoginPage = new VendorLoginPage(page);
     sideNavigationPage = new SideNavigationPage(page);
     candidateDetailsPage = new CandidateDetailsPage(page);
 
-    await vLoginPage.login(username, "Vrdella!6");
+    await vLoginPage.login(process.env.USERID, process.env.PASSID);
 
 });
 
@@ -28,15 +28,17 @@ test("Validate the Vendor - Side Navigation's Dashboard", async () => {
     
 });
 
-test("Validate the Vendor - Side Navigation's Candidate Details", async () => {
+test("Validate the Vendor - Side Navigation's Candidate Details", async ({page}) => {
 
     await expect(sideNavigationPage.candidateDetailsButton).toBeVisible();
     await sideNavigationPage.clickCandidateDetailsButton();
 
+    await page.waitForTimeout(1500);
     await validateOptionalScenarios(username, "Candidate Details");
 
     await candidateDetailsPage.clickBeginVerificationButton();
 
+    await page.waitForTimeout(1500);
     await validateOptionalScenarios(username, "Candidate Details");
 });
 
@@ -118,5 +120,5 @@ async function validateOptionalScenarios(username , pageTitle){
     await expect(sideNavigationPage.notificationButton).toBeVisible();
 
     await sideNavigationPage.searchCandidate(candidateName);
-    await expect(sideNavigationPage.searchedCandidate).toHaveText(candidateName);
+    await expect(sideNavigationPage.searchedCandidateSpan).toHaveAttribute('aria-label', candidateName);
 }

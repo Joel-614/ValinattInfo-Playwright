@@ -6,7 +6,6 @@ import { OutlookPage } from "../../pages/Vendor/OutlookPage";
 
 var loginPage, sideAndTopbarPage, candidateDetailsPage, outlookPage;
 let outlookEmail = "joel@vivyacorp.com", outlookPassword = "vrvictory!6";
-let vendorUsername = "joel_viltrumite", vendorPassword = "Vrdella!6";
 
 test.beforeEach(async ({page}) => {
 
@@ -15,15 +14,16 @@ test.beforeEach(async ({page}) => {
     candidateDetailsPage = new CandidateDetailsPage(page);
     outlookPage = new OutlookPage(page);
 
+    await page.goto(process.env.URL);
+
+    await loginPage.login(process.env.USERID, process.env.PASSID);
+    
+
 })
 
 test.skip("Validating Court Check Candidate", async ({page}) => {
 
     await deleteMails(page);
-
-    await page.goto("https://devapp.valianttinfo.com");
-
-    await loginPage.login(vendorUsername, vendorPassword);
 
     await sideAndTopbarPage.clickCandidateDetailsButton();
 
