@@ -63,7 +63,7 @@ test("Validate error when creating a pack with an existing pack name", async ({p
         await packDetailsPage.clickSelectAllChecksInp();
 
         await packDetailsPage.clickMakeAPlanBtn();
-
+        
         await packDetailsPage.enterPackName("All Checks Pack");
 
         await packDetailsPage.clickCreatePackBtn();
