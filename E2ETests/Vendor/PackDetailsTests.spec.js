@@ -52,3 +52,30 @@ test("Validating Pack Creation Process", async ({page}) => {
     await expect(packDetailsPage.allChecksPack).toBeVisible();
 
 });
+
+test("Validate error when creating a pack with an existing pack name", async ({page}) => {
+
+    await page.waitForTimeout(2000);
+    if(await packDetailsPage.allChecksPack.isVisible()){
+
+        await packDetailsPage.clickCustomizePackBtn();
+
+        await packDetailsPage.clickSelectAllChecksInp();
+
+        await packDetailsPage.clickMakeAPlanBtn();
+
+        await packDetailsPage.enterPackName("All Checks Pack");
+
+        await packDetailsPage.clickCreatePackBtn();
+
+        await expect(packDetailsPage.alertMessage).toHaveText("Pack name already exists");
+
+        await packDetailsPage.clickAlertDoneBtn();
+
+        await packDetailsPage.clickCancelPackBtn();
+
+    }else{
+        console.log("I am inside the else condition")
+    }
+
+})

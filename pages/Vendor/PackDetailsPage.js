@@ -15,8 +15,12 @@ exports.PackDetailsPage = class PackDetailsPage{
         this.clearAllChecksInp = this.page.locator("[class='Clear']");
         this.makeAPlanBtn = this.page.getByText("Make a plan");
         this.packNameInp = this.page.locator("[placeholder='Pack name']");
+        this.cancelPackBtn = this.page.locator("[class='Cancel']");
         this.createPackBtn = this.page.locator("[type='submit']");
         this.createdPackDoneBtn = this.page.locator("[class='AlertContent'] button");
+
+        this.alertMessage = this.page.locator("[class='AlertContent'] span");
+        this.alertDoneBtn = this.page.locator("[class='AlertContent'] button");
 
     }
 
@@ -44,12 +48,20 @@ exports.PackDetailsPage = class PackDetailsPage{
         await this.packNameInp.fill(packName);
     }
 
+    async clickCancelPackBtn(){
+        await this.cancelPackBtn.click();
+    }
+
     async clickCreatePackBtn(){
         await this.createPackBtn.click();
     }
 
     async clickCreatedPackDoneBtn(){
         await this.createdPackDoneBtn.click();
+    }
+
+    async clickAlertDoneBtn(){
+        await this.alertDoneBtn.click();
     }
 
 }
