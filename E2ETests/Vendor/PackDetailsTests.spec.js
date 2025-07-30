@@ -74,8 +74,5 @@ test("Validate error when creating a pack with an existing pack name", async ({p
 
         await packDetailsPage.clickCancelPackBtn();
 
-    }else{
-        console.log("I am inside the else condition")
     }
-
 })
