@@ -63,7 +63,7 @@ test("Validate error when creating a pack with an existing pack name", async ({p
         await packDetailsPage.clickSelectAllChecksInp();
 
         await packDetailsPage.clickMakeAPlanBtn();
-        
+
         await packDetailsPage.enterPackName("All Checks Pack");
 
         await packDetailsPage.clickCreatePackBtn();
@@ -75,4 +75,24 @@ test("Validate error when creating a pack with an existing pack name", async ({p
         await packDetailsPage.clickCancelPackBtn();
 
     }
+})
+
+test.skip("Validate Naming Packs Negative Scenarios", async () => {
+
+        await packDetailsPage.clickCustomizePackBtn();
+
+        await packDetailsPage.clickSelectAllChecksInp();
+
+        await packDetailsPage.clickMakeAPlanBtn();
+
+        // Clicking on 'Create' without giving any value in the Pack Name
+        await packDetailsPage.enterPackName("");
+
+        await packDetailsPage.clickCreatePackBtn();
+
+        // Clicking on 'Create' with Spaces in the Pack Name
+        await packDetailsPage.enterPackName("              ");
+
+        await packDetailsPage.clickCreatePackBtn();
+
 })
