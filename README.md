@@ -3,9 +3,10 @@ Valiantt Info Regression Automation Suite:
 
 No of Testcases Currently: 
 
-Testcases Covered:
+Testcases Covered: 47
 
 Vendor:
+
     1. LoginTests:
         1. Validate the Design
         2. Validate the Username Input
