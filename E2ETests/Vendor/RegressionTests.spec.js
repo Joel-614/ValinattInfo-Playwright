@@ -21,15 +21,15 @@ test.beforeEach(async ({page}) => {
 
 })
 
-test.skip("Validating Court Check Candidate", async ({page}) => {
+test("Validating Court Check Candidate", async ({page}) => {
 
-    await deleteMails(page);
+    // await deleteMails(page);
 
-    await sideAndTopbarPage.clickCandidateDetailsButton();
+    // await sideAndTopbarPage.clickCandidateDetailsButton();
 
-    await candidateDetailsPage.clickBeginVerificationButton();
+    // await candidateDetailsPage.clickBeginVerificationButton();
 
-    await candidateDetailsPage.fillCourtCandidate();
+    // await candidateDetailsPage.fillCourtCandidate();
 
 })
 

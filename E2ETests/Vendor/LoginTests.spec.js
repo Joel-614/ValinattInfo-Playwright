@@ -38,6 +38,14 @@ test("Validate the Password Input", async () => {
 
 test("Validate the Invalid Login Scenarios", async () => { 
   
+  // Scenarios Covered:
+  // Validate Invalid Login Scenarios (Without Username and Password)
+  // Validate Invalid Login Scenarios (With Username and without Password)
+  // Validate Invalid Login Scenarios (Without Username and with Password)
+  // Validate Invalid Login Scenarios (With Invalid Username and with Valid Password)
+  // Validate Invalid Login Scenarios (With Valid Username and with Inalid Password)
+  // Validate Invalid Login Scenarios (With Invalid Username and Password)
+
   const alertText = "Failed";
   const loginTestData = [
     { username: "", password: "" },

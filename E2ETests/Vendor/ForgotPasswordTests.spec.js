@@ -25,13 +25,13 @@ test("Validate the Design", async () => {
 
 test("Validate the Invalid Forgot Password Scenarios", async () => {
 
-    // TC1: Click Next Button without entering username
+    // Validate the Invalid Forgot Password Scenarios (Clicking Next Button without entering username)
     await fPasswordPage.clickNextButton();
     await expect(fPasswordPage.alertTitle).toHaveText("Failed");
     await expect(fPasswordPage.alertText).toHaveText("Please enter username");
     await fPasswordPage.clickAlertDoneButton();
     
-    // TC2: Click Next Button with an Invalid username
+    // Validate the Invalid Forgot Password Scenarios (Clicking Next Button with an Invalid username)
     await fPasswordPage.username.fill("invalidusername");
     await fPasswordPage.clickNextButton();
     await expect(fPasswordPage.alertTitle).toHaveText("Failed");

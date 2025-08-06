@@ -23,7 +23,7 @@ test.beforeEach(async ({page}) => {
 
 test.describe("Validate the Low Balance Alert", async () => {
 
-    test("TC: 141 - Clicking on 'Edit' Button", async () => {
+    test("Clicking on 'Edit' Button", async () => {
 
         await sideAndTopbarPage.clickEditLowBalanceAlertButton();
         await expect(sideAndTopbarPage.editLowBalanceSaveButton).toBeVisible();
@@ -31,7 +31,7 @@ test.describe("Validate the Low Balance Alert", async () => {
         
     });
 
-    test("TC: 142 - Clicking on 'Cancel' Button", async () => {
+    test("Clicking on 'Cancel' Button", async () => {
 
         var amount = await sideAndTopbarPage.lowBalanceAmount.innerHTML();
 
@@ -42,7 +42,7 @@ test.describe("Validate the Low Balance Alert", async () => {
 
     });
 
-    test("TC: 143 - Click on 'Edit', add a new amount then click on 'Save'", async () => {
+    test("Click on 'Edit' and add a new amount then click on 'Save'", async () => {
 
         // await sideAndTopbarPage.clickEditLowBalanceAlertButton();
         // await sideAndTopbarPage.enterEditLowBalanceAmountInput("3003");
@@ -51,7 +51,7 @@ test.describe("Validate the Low Balance Alert", async () => {
 
     });
 
-    test("TC: XX - Clicking on 'Save' without entering nothing in the amount input", async ({page}) => {
+    test("Clicking on 'Save' without entering nothing in the amount input", async ({page}) => {
         // XXX: New Test Case
         await page.on("dialog", async dialog => {
             await expect(await dialog.message()).toBe("Please enter a valid numeric amount")
@@ -66,7 +66,7 @@ test.describe("Validate the Low Balance Alert", async () => {
 
 
 test.describe("Validate the Wallet Recharge", async () => {
-    test("TC:146 - Without entering any amount, click on 'Confirm'", async ({page}) => {
+    test("Without entering any amount, click on 'Confirm'", async ({page}) => {
         await page.on("dialog", async dialog => {
             await expect(await dialog.message()).toBe("Please enter the amount")
             await dialog.accept();
@@ -76,7 +76,7 @@ test.describe("Validate the Wallet Recharge", async () => {
         await sideAndTopbarPage.clickConfirmButton();
     });
     
-    test("TC:147 - Entering 0 as a amount and clicking on 'Confirm'", async ({page}) => {
+    test("Entering 0 as a amount and clicking on 'Confirm'", async ({page}) => {
         await page.on("dialog", async dialog => {
             await expect(await dialog.message()).toBe("Please enter a valid amount")
             await dialog.accept();
@@ -85,7 +85,7 @@ test.describe("Validate the Wallet Recharge", async () => {
         await rechargeAmount("0"); // Helper Method #1
     });
 
-    test.skip("TC:149 - Enter a valid amount in the field and recharge it", async ({page}) => {
+    test.skip("Enter a valid amount in the field and recharge it", async ({page}) => {
         
         const amount = "2034";
 
@@ -93,7 +93,7 @@ test.describe("Validate the Wallet Recharge", async () => {
 
     });
 
-    test.skip("TC:150 - Go back when the user is in CCAvenue Payment Page", async ({page}) => {
+    test.skip("Go back when the user is in CCAvenue Payment Page", async ({page}) => {
 
         const amount = "1055";
 
@@ -105,7 +105,7 @@ test.describe("Validate the Wallet Recharge", async () => {
         await VerifyAmountAndStatus(amount, "initiated") // Helper Method #2
     })
 
-    test.skip("TC:152 - Simulate Failure Status in the CCAvenue Payment Page", async ({page}) => {
+    test.skip("Simulate Failure Status in the CCAvenue Payment Page", async ({page}) => {
 
         const amount = "115";
 

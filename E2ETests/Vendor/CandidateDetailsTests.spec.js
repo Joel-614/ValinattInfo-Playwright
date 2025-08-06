@@ -23,17 +23,17 @@ test.describe("Validate the Candidate Details", async () => {
     
     test("Validating the Searchbox", async ({page}) => {
 
-        // Validating if the search candidate is being retrieved
+        // Validating the Searchbox (Validating if the search candidate is being retrieved)
         await candidateDetailsPage.enterSearchBox(candidateName);
         await expect(candidateDetailsPage.searchedCandidate).toBeVisible();
 
         await page.waitForTimeout(1500);
-        // Validating the list if we given an invalid candidate Name
+        // Validating the Searchbox (Validating the list if we given an invalid candidate Name)
         await candidateDetailsPage.enterSearchBox("TEST TEST TEST");
         await page.waitForTimeout(1500);
         await expect(candidateDetailsPage.noResultsFound).toHaveText("No results found");
 
-        // Validating the list after clicking on cancel
+        // Validating the Searchbox (Validating the list after clicking on cancel)
         await candidateDetailsPage.clickSearchBoxCancel();
         await expect(candidateDetailsPage.noResultsFound).toBeHidden();
 
@@ -47,7 +47,7 @@ test.describe("Validate the Begin Verification Form Scenarios", async () => {
         await candidateDetailsPage.clickBeginVerificationButton();
     })
 
-    test("Clicking on 'Proceed' Button without filling up", async ({page}) => {
+    test("BGV Form (Clicking on 'Proceed' Button without filling up)", async ({page}) => {
         
         await validateAlertMessage(page, "Please fill in all required fields.");
 
@@ -55,7 +55,7 @@ test.describe("Validate the Begin Verification Form Scenarios", async () => {
 
     });
 
-    test("Clicking on 'Proceed' Button without giving any resume file", async ({page}) => {
+    test("BGV Form (Clicking on 'Proceed' Button without giving any resume file)", async ({page}) => {
 
         await validateAlertMessage(page, "Please attach candidate's resume.");
 
@@ -64,7 +64,7 @@ test.describe("Validate the Begin Verification Form Scenarios", async () => {
 
     });
 
-    test("Clicking on 'Proceed' Button with Invalid Email Address", async ({page}) => {
+    test("BGV Form (Clicking on 'Proceed' Button with Invalid Email Address)", async ({page}) => {
 
         await validateAlertMessage(page, "Please enter a valid email address.");
 
