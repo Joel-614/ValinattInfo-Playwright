@@ -57,7 +57,7 @@ exports.SideNavigationPage = class SideNavigationPage{
         this.notificationTitle = page.locator("//header[@class='NotificationHeader']/h1");
         
         // Search Candidate List
-        this.searchedCandidateSpan = page.locator("//td[@data-index='2']/span");
+        this.searchedCandidateSpan = page.locator("[aria-label='" + process.env.CANDIDATENAME +  "']");
 
         // Top Bar ---------------------------------------------------------------------
     };

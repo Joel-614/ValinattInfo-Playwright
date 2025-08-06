@@ -1,8 +1,6 @@
 Valiantt Info Regression Automation Suite:
     Created using Playwright with Javascript
 
-No of Testcases Currently: 
-
 Testcases Covered: 47
 
 Vendor:
