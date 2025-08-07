@@ -70,3 +70,6 @@ Vendor:
             3. Enter a valid amount in the field and recharge it
             4. Go back when the user is in CCAvenue Payment Page
             5. Simulate Failure Status in the CCAvenue Payment Page
+
+    8. DashboardTests:
+        1. Validate the Sub Section Titles
