@@ -48,7 +48,7 @@ test("Validating Pack Creation Process", async ({page}) => {
 
     await packDetailsPage.clickCreatedPackDoneBtn();
 
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(6000);
     await expect(packDetailsPage.allChecksPack).toBeVisible();
 
 });
